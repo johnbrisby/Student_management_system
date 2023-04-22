@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>hello  world</h1>
+
+    {% for i in student %}
+    <tr>
+        
+        
+        <td>{{  i.student_number }}</td>
+        <td>{{  i.first_name }}</td>
+        <td>{{  i.last_name }}</td>
+        <td>{{  i.email }}</td>
+        <td>{{  i.study_field }}</td>
+        <td>{{  i.gpa }}</td>
+        <a href="{% url 'detail' i.id %}">detail</a>
+        <a href="{% url 'edit' i.id %}">edit</a>
+
+        
+        
+
+        <form action="{% url 'delete' i.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">删除</button>
+            
+        </form>
+        
+        <br>
+        
+    
+    </tr>
+    {% endfor %}
+
+<a href="{% url 'add' %}">add</a><br>
+
+</body>
+</html>
